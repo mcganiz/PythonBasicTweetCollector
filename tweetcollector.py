@@ -18,9 +18,9 @@ class TwitterAPI:
         print(self.api.rate_limit_status()['resources']['search'])
 
     def get_user_tweets(self, screen_name):
-        for tweet in tweepy.Cursor(self.api.user_timeline, screen_name=screen_name).items():
-            yield {'text': tweet._json['text']}
+        for tweet in tweepy.Cursor(self.api.user_timeline, screen_name=screen_name, tweet_mode="extended").items():
+            yield {'text': tweet.full_text}
 
     def search(self, search_query):
-        for tweet in tweepy.Cursor(self.api.search, q=search_query).items():
-            yield {'text': tweet._json['text']}
+        for tweet in tweepy.Cursor(self.api.search, q=search_query, tweet_mode="extended").items():
+            yield {'text': tweet.full_text}
