@@ -31,7 +31,7 @@ search_query_tweet_generator = tw.search('#CrazySummer')
 tokenized_tweet_generator = TwitterTokenizer(user_tweet_generator)
 
 # You can write your tweets to mongodb like below.
-mdb_writer = MongodbWriter(iter(user_tweet_generator), db_name, collection_name)
+mdb_writer = MongodbWriter(user_tweet_generator, db_name, collection_name)
 # Or you can fetch data using the function below
 mdb_reader = MongodbReader(db_name, collection_name)
 
