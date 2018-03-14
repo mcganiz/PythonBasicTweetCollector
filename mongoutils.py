@@ -18,7 +18,7 @@ class MongodbWriter(MongodbClient):
 
     def __iter__(self):
         for tweet in self.tweets_generator:
-            yield self.collection.insert_one(tweet)
+            self.collection.insert_one(tweet)
 
 
 class MongodbReader(MongodbClient):
